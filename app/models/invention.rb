@@ -1,0 +1,2 @@
+class Invention < ApplicationRecord
+end
