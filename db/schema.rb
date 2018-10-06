@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(version: 2018_10_05_042724) do
     t.text "description", null: false
     t.string "user_name", limit: 255
     t.string "user_email", limit: 255
-    t.text "bits", default: [], null: false, array: true
-    t.text "materials"
+    t.jsonb "bits", null: false
+    t.text "materials", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["bits"], name: "index_inventions_on_bits", using: :gin
     t.index ["title"], name: "index_inventions_on_title", unique: true
     t.index ["user_email"], name: "index_inventions_on_user_email"
   end
