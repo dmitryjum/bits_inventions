@@ -1,4 +1,4 @@
-class InventionsController < ApplicationController
+class Api::V1::InventionsController < ApplicationController
   def index
     @inventions = Invention.all
     respond_to do |format|
