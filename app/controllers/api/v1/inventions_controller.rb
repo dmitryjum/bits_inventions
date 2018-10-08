@@ -19,6 +19,16 @@ class Api::V1::InventionsController < ApplicationController
     process_update
   end
 
+  def find_all_by_bit_name
+    @invnetions = Invention.where_bit_name_is(params[:bit_name])
+    render status: 200, json: @inventions
+  end
+
+  def where_bit_names_are
+    @inventions = Invention.where_bit_names_are(params[:bit_names])
+    render status: 200, json: @inventions
+  end
+
   def destroy
     @invention.destroy
     render status: 204, json: {}

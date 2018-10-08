@@ -8,6 +8,9 @@ class Invention < ApplicationRecord
   validate :bits_count_and_type
   validate :bits_name
 
+  scope :where_bit_name_is, -> (bit_name) { where ("bits ? '#{bit_name}'") }
+  scope :where_bit_names_are, ->(bit_names) { where('bits ?| array[:keys]', keys: bit_names) }
+
 private
 
   def bits_type
