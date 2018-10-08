@@ -1,0 +1,1 @@
+BitsInventionsApi::Application.config.secret_key_base = '6993b715de0877a6e83482bf250ed13962df933b3585d3659ef120ed42028c3062248bb52760b4a95b2a6b7034c1e666c3cd91cb65994c8afb1f4068783c2b2f'
