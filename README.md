@@ -1,24 +1,48 @@
-# README
+Bits Inventions - The API for Inventions Database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The application allows to Create, Update, Destroy And Find Invention records. The user can find an Invention by id, title or names ot bits that are used for this Invention. The user can delete or update Invention record finding it by `title` or by `id`
 
-Things you may want to cover:
+## Local Environment Setup
 
-* Ruby version
+### Local software prerequisites
+- Git
+- Ruby 2.5.1
+- Rails 5.2.1
+- PostgreSQL 9.4.4
+### Install all gems
+```
+bundle install
+```
 
-* System dependencies
+### Setup DB
+```
+rake db:create
+```
 
-* Configuration
+### Run migrations
+```
+rake db:migrate
+```
 
-* Database creation
+### Run tests
+```
+rspec
+```
 
-* Database initialization
+### Run the application
+```
+rails s
+```
 
-* How to run the test suite
+### See available routes
+```
+rake routes
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Check progress
+```
+git log
+```
 
-* Deployment instructions
-
-* ...
+Use Postman app or similar to make test requests. Read test suite to learn all potential functionality.
+The application requires to receive JWT token in Authorization headers. There is no user functionality that dynamically generates token, so it has to be pregenerated manually.
