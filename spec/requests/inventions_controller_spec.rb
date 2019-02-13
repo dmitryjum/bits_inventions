@@ -32,7 +32,7 @@ describe Api::V1::InventionsController do
     end
 
     it 'receives response with list of schools that are in DB' do
-      invnetion_titles = Invention.pluck(:title)
+      invention_titles = Invention.pluck(:title)
       returned_titles = @json_body.map {|s| s["title"]}
       expect(invnetion_titles).to eq returned_titles
     end
