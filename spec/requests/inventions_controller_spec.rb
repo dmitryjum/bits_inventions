@@ -3,10 +3,11 @@ require 'json_web_token'
 
 describe Api::V1::InventionsController do
   before do
+    user = User.create email: "email@example.com", password: "password", password_confirmation: "password"
     invention1 = FactoryBot.create :invention, title: "robot1", bits: {"power" => 1, "pulse" => 2, "servo-motor" => 1}
     invention2 = FactoryBot.create :invention, title: "robot2", bits: {"power" => 3}
     invention3 = FactoryBot.create :invention, title: "robot3"
-    @valid_auth_header = "Bearer #{JsonWebToken.encode({valid_user: 'true'})}"
+    @valid_auth_header = "Bearer #{JsonWebToken.encode({user_id: user.id})}"
     @invalid_auth_header = 'sdf'
     host! 'api.example.com'
   end
@@ -34,7 +35,7 @@ describe Api::V1::InventionsController do
     it 'receives response with list of schools that are in DB' do
       invention_titles = Invention.pluck(:title)
       returned_titles = @json_body.map {|s| s["title"]}
-      expect(invnetion_titles).to eq returned_titles
+      expect(invention_titles).to eq returned_titles
     end
   end
 
